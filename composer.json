@@ -1,0 +1,26 @@
+{
+    "name": "ccheng/event-manager",
+    "description": "Event Manager",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ccheng",
+            "email": "fishes207569@126.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "bower-asset/layer": "~3.1.1",
+        "almasaeed2010/adminlte": "v4.2.8",
+        "kartik-v/yii2-widget-select2": "@dev",
+        "kartik-v/yii2-widget-datepicker": "*",
+        "kartik-v/yii2-field-range": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ccheng\\eventmanager\\": "src"
+        }
+    }
+}

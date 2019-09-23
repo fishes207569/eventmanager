@@ -1,0 +1,38 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+
+/* @var $this yii\web\View */
+/* @var $model backend\models\BizEvent */
+EventManager\LayerAsset::register($this);
+$this->title = $model->event_id;
+$this->params['breadcrumbs'][] = ['label' => '事件管理', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="biz-event-view">
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'event_name',
+            'event_content:ntext',
+            [
+                'attribute' => '事件图像',
+                'format'    => 'raw',
+                'value'     => function ($model) {
+                    return '<img style="height:30px;width:30px" src="' . $model->event_image . '" />';
+                },
+            ],
+            'event_year',
+            'event_month',
+            'event_date',
+            'event_create_at',
+            'event_update_at',
+            'event_from_system',
+            'event_author',
+        ],
+    ]) ?>
+    <script>
+        window.parent.layer.title('<h4>事件详情</h4>',window.parent.layer_from_index);
+    </script>
+</div>
