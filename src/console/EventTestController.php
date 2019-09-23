@@ -1,5 +1,5 @@
 <?php
-namespace EventManager\console;
+namespace ccheng\eventmanager\console;
 
 use yii\console\Controller;
 

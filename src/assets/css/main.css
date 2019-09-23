@@ -1,22 +1,4 @@
-/*!*公共样式*!*/
-/*html,body{width: 100%;height: 100%;font-family: "microsoft yahei";overflow-x: hidden;overflow-y: auto;-webkit-overflow-scrolling : touch;background: #f3f3f3;}*/
-/**,body,html,dl,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,p,form,header,section,article,footer,td,th{margin:0;padding:0;}*/
-/*h1,h2,h3,h4,h5,h6{font-size:100%}*/
-/*a{text-decoration:none;outline: none;}*/
-/*a:hover{text-decoration:none;text-underline: none;}*/
-/*img{border:0}*/
-/*ul,li{list-style: none;}*/
-/*i{font-style: normal;}*/
-/*table{border-collapse:collapse;border-spacing:0}*/
-/*button{cursor: pointer;}*/
-/*input,select,button,a,textarea{border: 0;outline: none;-webkit-tap-highlight-color:rgba(0,0,0,0);}*/
-/*input:-moz-placeholder{color: #c9c9c9;}*/
-/*input:-ms-input-placeholder{color: #c9c9c9;}*/
-/*input::-webkit-input-placeholder{color: #c9c9c9;}*/
-/*!*公共样式结束*!*/
-
-/*.body-box{width:1200px;margin:100px auto;background: #fff;}*/
-.body-box{width:1200px;margin:0 auto;background: #fff;}
+.body-box{width:1200px;margin:0 auto;}
 .timer-shaft-box{width:100%;padding:30px 40px;box-sizing: border-box;}
 .timer-shaft{position:relative;width:100%;height:80px;overflow: hidden;}
 .timer-left{position:absolute;top:50%;left:20px;z-index:99;width:23px;height:37px;margin-top:-18.5px;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAlCAMAAACeRoI0AAAAkFBMVEUAAAD/j0D//vz/lEj/lUr/nVf/nlr/vY7/9O3/kkb/qWz/rHL/zKf/2b//3sb/9u///Pr/mlP/yaP/6dn/697/l07/uor/+vb/kUT/oF7/sHj/uIb/wZX/zqv/1rn/4Mr/+PL/+/j/pGT/pmf/toL/0K7/07P/28L/48//5tT/7eH/7+T/8+n/xZ3/x5//jT2CB9Y7AAAAL3RSTlMA+wTw7t3ZlBjzwbpzVUsVB+J5MSzpmwz21LKfjG5cRhEJzMilamRQPzkoJByBfnP5tJoAAAEgSURBVCjPhZLrcoIwEIWBBES5KCjipYraqq223fd/u54hmw3NjMofPg6Z5NvdBPJ0+mxxr0uJZzE1jAdNJ8lzImoNjoiUjVNFNDZ4C4nWNl9i+chgBqw5nmONmvZYIq6OnE/wkfcUJcCC4wKcRD3ugBPnSGSUp5oonHNeI87EkbbWcYw1ix4XIXRTzrePHbVzjGcDx91Tx3zgeKzw0RlH5TlunOPSNizGmpvZHboqtXkoJaWuJDyJ1BRh+9U3wHd4A34Ew55dea7AL/vj6mo8A9/lhMzNZA3cA7iH4tfJDL16NsAfvP367+ELV7+/h4Zd/XlcgKd/rrXn6s37k+DaPnD9FVct9/m+wmAN8v1rxVUHA9eGsW1c93BedbFYxOUf/dQuNZao/7EAAAAASUVORK5CYII=) no-repeat;background-size: cover;cursor:pointer;}

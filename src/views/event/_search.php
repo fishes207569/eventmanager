@@ -1,13 +1,13 @@
 <?php
 
-use EventManager\models\BizEvent;
+use ccheng\eventmanager\models\BizEvent;
 use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model EventManager\models\Searchs\EventSearch */
+/* @var $model ccheng\eventmanager\models\Searchs\EventSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

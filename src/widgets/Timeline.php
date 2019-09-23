@@ -1,7 +1,7 @@
 <?php
-namespace EventManager\widgets;
+namespace ccheng\eventmanager\widgets;
 
-use EventManager\EventAsset;
+use ccheng\eventmanager\EventAsset;
 use yii\base\Widget;
 
 class Timeline extends Widget

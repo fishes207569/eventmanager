@@ -1,12 +1,12 @@
 <?php
 
-namespace EventManager\models\Searchs;
+namespace ccheng\eventmanager\models\Searchs;
 
-use EventManager\helpers\DateHelper;
+use ccheng\eventmanager\helpers\DateHelper;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use EventManager\models\BizEvent;
+use ccheng\eventmanager\models\BizEvent;
 
 /**
  * EventSearch represents the model behind the search form about `backend\models\BizEvent`.
@@ -32,6 +32,8 @@ class EventSearch extends BizEvent
                     'event_update_at',
                     'event_from_system',
                     'event_author',
+                    'start_date',
+                    'end_date'
                 ],
                 'safe',
             ],
@@ -80,7 +82,7 @@ class EventSearch extends BizEvent
             'event_create_at' => $this->event_create_at,
             'event_update_at' => $this->event_update_at,
         ]);
-
+        $query->andFilterWhere(['between','event_date',$this->start_date,$this->end_date]);
         $query->andFilterWhere(['like', 'event_name', $this->event_name])
             ->andFilterWhere(['like', 'event_content', $this->event_content])
             ->andFilterWhere(['like', 'event_month', $this->event_month])

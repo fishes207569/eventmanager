@@ -6,14 +6,14 @@
  * Time: 下午3:36
  */
 
-namespace EventManager;
+namespace ccheng\eventmanager;
 
 
 use yii\web\AssetBundle;
 
 class EventIconAsset extends AssetBundle
 {
-    public $sourcePath = '@EventManager/assets';
+    public $sourcePath = '@ccheng/eventmanager/assets';
     public $baseUrl = '@web';
 
     public $js = [
@@ -25,6 +25,6 @@ class EventIconAsset extends AssetBundle
 
     public $depends = [
         'yii\web\JqueryAsset',
-        'EventManager\LayerAsset'
+        'ccheng\eventmanager\LayerAsset'
     ];
 }

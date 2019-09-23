@@ -6,7 +6,7 @@
  * Time: 下午3:36
  */
 
-namespace EventManager;
+namespace ccheng\eventmanager;
 
 
 use yii\web\AssetBundle;
@@ -14,7 +14,7 @@ use yii\web\AssetBundle;
 class EventAsset extends AssetBundle
 {
 
-    public $sourcePath = '@EventManager/assets';
+    public $sourcePath = '@ccheng/eventmanager/assets';
     public $baseUrl = '@web';
 
     public $css = [
@@ -27,6 +27,6 @@ class EventAsset extends AssetBundle
 
     public $depends = [
         'yii\web\JqueryAsset',
-        'EventManager\ViewerAsset'
+        'ccheng\eventmanager\ViewerAsset'
     ];
 }

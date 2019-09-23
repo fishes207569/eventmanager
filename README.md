@@ -38,8 +38,7 @@ yii migrate --migrationPath=@vendor/ccheng/event-manager/src/migrations
 return [
 	'modules' => [
 		'event' => [
-                    'class' => 'EventManager\Module',
-                    'layout'=>'{layout}'
+                'class'=>'ccheng\eventmanager\Module',
 		]
 		...
 	]

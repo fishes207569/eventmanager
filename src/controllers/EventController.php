@@ -1,11 +1,11 @@
 <?php
 
-namespace EventManager\controllers;
+namespace ccheng\eventmanager\controllers;
 
-use EventManager\helpers\DateHelper;
+use ccheng\eventmanager\helpers\DateHelper;
 use Yii;
-use EventManager\models\BizEvent;
-use EventManager\models\Searchs\EventSearch;
+use ccheng\eventmanager\models\BizEvent;
+use ccheng\eventmanager\models\Searchs\EventSearch;
 use yii\helpers\Html;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

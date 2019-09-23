@@ -16,7 +16,8 @@
         "almasaeed2010/adminlte": "^2.4.0",
         "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-widget-datepicker": "*",
-        "kartik-v/yii2-field-range": "*"
+        "kartik-v/yii2-field-range": "*",
+        "rmrevin/yii2-fontawesome": "~2.9"
     },
     "autoload": {
         "psr-4": {

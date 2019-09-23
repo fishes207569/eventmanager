@@ -1,6 +1,6 @@
 <?php
 
-namespace EventManager;
+namespace ccheng\eventmanager;
 
 use yii\web\AssetBundle as BaseAdminLteAsset;
 

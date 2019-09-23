@@ -2,13 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use EventManager\helpers\StringHelper;
-use EventManager\ViewerAsset;
+use ccheng\eventmanager\helpers\StringHelper;
+use ccheng\eventmanager\ViewerAsset;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\EventSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-\EventManager\AdminLteAsset::register($this);
+\ccheng\eventmanager\AdminLteAsset::register($this);
 ViewerAsset::register($this);
 $this->title                   = '事件列表';
 $this->params['breadcrumbs'][] = $this->title;
@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
+            'emptyText'=>'暂无事件记录',
             'columns'      => [
                 'event_id',
                 'event_date',

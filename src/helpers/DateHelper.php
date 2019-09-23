@@ -1,5 +1,5 @@
 <?php
-namespace EventManager\helpers;
+namespace ccheng\eventmanager\helpers;
 
 class DateHelper
 {

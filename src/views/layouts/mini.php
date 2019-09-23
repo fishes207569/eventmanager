@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $content string */
 
 backend\assets\AppAsset::register($this);
-dmstr\web\AdminLteAsset::register($this);
+ccheng\eventmanager\AdminLteAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>

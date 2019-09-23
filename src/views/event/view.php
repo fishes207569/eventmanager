@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\BizEvent */
-EventManager\LayerAsset::register($this);
+ccheng\eventmanager\LayerAsset::register($this);
 $this->title = $model->event_id;
 $this->params['breadcrumbs'][] = ['label' => '事件管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

@@ -1,8 +1,8 @@
 <?php
 
-namespace EventManager\models;
+namespace ccheng\eventmanager\models;
 
-use EventManager\helpers\ImageHelper;
+use ccheng\eventmanager\helpers\ImageHelper;
 use Yii;
 use yii\base\DynamicModel;
 use yii\base\UserException;

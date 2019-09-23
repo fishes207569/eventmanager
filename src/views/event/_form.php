@@ -4,11 +4,11 @@ use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
-use EventManager\models\BizEvent;
+use ccheng\eventmanager\models\BizEvent;
 
-\EventManager\AdminLteAsset::register($this);
+\ccheng\eventmanager\AdminLteAsset::register($this);
 /* @var $this yii\web\View */
-/* @var $model EventManager\models\BizEvent */
+/* @var $model ccheng\eventmanager\models\BizEvent */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
