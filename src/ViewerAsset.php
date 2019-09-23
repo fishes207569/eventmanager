@@ -14,7 +14,7 @@ use yii\web\AssetBundle;
 class ViewerAsset extends AssetBundle
 {
 
-    public $sourcePath = '@ccheng\eventmanager/assets';
+    public $sourcePath = '@ccheng/eventmanager/assets';
     public $baseUrl = '@web';
 
     public $css = [
