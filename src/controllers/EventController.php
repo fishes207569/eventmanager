@@ -49,9 +49,9 @@ class EventController extends Controller
 
     public function actionHistory()
     {
-        $week_days   = DateHelper::getNowWeeks();
+        $week_days   = DateHelper::getNow7Day();
         $searchModel = new EventSearch();
-        $now_week    = DateHelper::getNowWeeks('', 'Y-m-d');
+        $now_week    = DateHelper::getNow7Day('Y-m-d');
         $params      = ['EventSearch' => ['event_date' => $now_week]];
 
         return $this->render('history', [

@@ -102,8 +102,7 @@ class EventSearch extends BizEvent
         $query->orderBy('event_create_at');
         $data=$query->asArray()->all();
         $group_data=[];
-        $event_week=DateHelper::getNowWeeks('','Y-m-d');
-        foreach ($event_week as $week){
+        foreach ($this->event_date as $week){
             $group_data[$week]=[];
             foreach ($data as $val){
                 if($week==$val['event_date']){

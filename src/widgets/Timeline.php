@@ -80,8 +80,8 @@ JS;
         $widget = <<<HTML
     <div class="timer-shaft-box">
         <div class="timer-shaft">
-            <div class="timer-left"></div>
-            <div class="timer-right"></div>
+            <div class="timer-left" title="后一天"></div>
+            <div class="timer-right" title="前一天"></div>
             <div class="timer-scale">{$this->getTimelineTitle()}</div>
         </div>
         <div class="timer-shaft-content">{$this->getTimelineEvent()}</div>

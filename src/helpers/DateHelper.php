@@ -15,4 +15,13 @@ class DateHelper
 
         return $date;
     }
+    public static function getNow7Day($format='d'){
+        $now    = date('Y-m-d');
+        $date[] = date($format);
+        for ($i = 1; $i <= 6; $i++) {
+            $date[] = date($format, strtotime('-' . $i . ' day', strtotime($now)));
+        }
+
+        return $date;
+    }
 }
