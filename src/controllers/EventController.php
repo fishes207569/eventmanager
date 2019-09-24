@@ -93,7 +93,7 @@ class EventController extends Controller
 
         $this->layout = 'mini';
         !$model->event_date && $model->event_date = date('Y-m-d');
-        !$model->event_author && $model->event_author = \Yii::$app->user->identity->username;
+        !$model->event_author && $model->event_author = \Yii::$app->user->identity?\Yii::$app->user->identity->username:'';;
         !$model->event_from_system && $model->event_from_system = BizEvent::SYSTEM_BIZ;
 
         return $this->render('create', [

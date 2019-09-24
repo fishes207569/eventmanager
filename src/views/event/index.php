@@ -45,10 +45,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute'      => 'event_content',
                     'format'         => 'raw',
                     'value'          => function ($model) {
-                        return StringHelper::cut_str($model->event_content, 20);
+                        return StringHelper::cut_str(strip_tags($model->event_content), 30);
                     },
                     'contentOptions' => function ($model, $key, $index, $column) {
-                        return ['title' => $model->event_content, 'alt' => $model->event_content];
+                        return ['title' => strip_tags($model->event_content), 'alt' => strip_tags($model->event_content)];
                     },
                 ],
 

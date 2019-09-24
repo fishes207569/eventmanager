@@ -25,7 +25,7 @@
                     ],end: function () {
                         let url=window.location.href;
                         console.log('url:'+url);
-                        if(url.indexOf('event/event/history')!=-1){
+                        if(url.indexOf('event/event')!=-1){
                             window.location.reload();
                         }
                     }

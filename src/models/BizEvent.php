@@ -55,7 +55,7 @@ class BizEvent extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['event_name', 'event_content', 'event_date'], 'required'],
+            [['event_name', 'event_content', 'event_date','event_author'], 'required'],
             [['event_content'], 'string'],
             [['event_year'], 'integer'],
             [['event_date', 'event_create_at', 'event_update_at'], 'safe'],
