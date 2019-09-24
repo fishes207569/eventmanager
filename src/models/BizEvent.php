@@ -34,7 +34,7 @@ class BizEvent extends \yii\db\ActiveRecord
     const SYSTEM_CAPITAL = 'capital';
     const SYSTEM_PAYSVR  = 'paysvr';
     const SYSTEM_MAP     = [
-        self::SYSTEM_BIZ     => 'BIZ',
+        self::SYSTEM_BIZ     => '资管系统',
         self::SYSTEM_RBIZ    => '还款系统',
         self::SYSTEM_GBIZ    => '放款系统',
         self::SYSTEM_CAPITAL => '清结算',

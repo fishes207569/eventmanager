@@ -15,11 +15,11 @@
                 window.layer_from_index = layer.open({
                     type: 2,
                     title: '<h4>添加事件</h4>',
-                    shadeClose: true,
+                    shadeClose: false,
                     scrollbar: false,
                     maxmin: true,
                     shade: 0.8,
-                    area: ['700px', '500px'],
+                    area: ['800px', '600px'],
                     content: [
                         "/event/event/create"
                     ],end: function () {
