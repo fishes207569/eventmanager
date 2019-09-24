@@ -51,7 +51,7 @@ class EventController extends Controller
     {
         $week_days   = DateHelper::getNowWeeks();
         $searchModel = new EventSearch();
-        $now_week    = DateHelper::getNowWeeks('','Y-m-d');
+        $now_week    = DateHelper::getNowWeeks('', 'Y-m-d');
         $params      = ['EventSearch' => ['event_date' => $now_week]];
 
         return $this->render('history', [
@@ -154,5 +154,19 @@ class EventController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actions()
+    {
+        return [
+            'upload' => [
+                'class'  => 'kucha\ueditor\UEditorAction',
+                'config' => [
+                    "imageUrlPrefix"  => \Yii::$app->request->baseUrl,//图片访问路径前缀
+                    "imagePathFormat" => "/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}",
+                    "imageRoot"       => Yii::getAlias("@webroot"),
+                ],
+            ],
+        ];
     }
 }

@@ -18,7 +18,42 @@ use ccheng\eventmanager\models\BizEvent;
 
     <?= $form->field($model, 'event_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'event_content')->textarea(['rows' => 6,'style'=>"resize:none;"]) ?>
+    <?= $form->field($model, 'event_content')->widget('kucha\ueditor\UEditor', [
+        'clientOptions' => [
+            //编辑区域大小
+            'initialFrameHeight' => '200',
+            //设置语言
+            'lang'               => 'zh-cn', //中文为 zh-cn
+            //定制菜单
+            'toolbars'           => [
+                [
+                    'fullscreen',
+                    'source',
+                    'undo',
+                    'redo',
+                    '|',
+                    'fontsize',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'fontborder',
+                    'strikethrough',
+                    'removeformat',
+                    'formatmatch',
+                    'autotypeset',
+                    'blockquote',
+                    'pasteplain',
+                    '|',
+                    'forecolor',
+                    'backcolor',
+                    '|',
+                    'lineheight',
+                    '|',
+                    'indent',
+                    '|',
+                ],
+            ],
+        ]]) ?>
 
     <?= $form->field($model, 'event_date')->widget(DatePicker::className(), [
         'removeButton'  => false,
@@ -34,7 +69,7 @@ use ccheng\eventmanager\models\BizEvent;
         'language'      => 'zh-CN',
     ]) ?>
 
-    <?= $form->field($model, 'event_image')->fileInput(['name'=>'event_image'])->label('事件图像'); ?>
+    <?= $form->field($model, 'event_image')->fileInput(['name' => 'event_image'])->label('事件图像'); ?>
     <?= $form->field($model, 'event_from_system')->widget(Select2::class, [
         'data'       => BizEvent::SYSTEM_MAP,
         'theme'      => Select2::THEME_DEFAULT,

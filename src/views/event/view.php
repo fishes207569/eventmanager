@@ -15,7 +15,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'event_name',
-            'event_content:ntext',
+            [
+                'attribute' => '事件内容',
+                'format'    => 'raw',
+                'value'     => function ($model) {
+                    return $model->event_content;
+                },
+            ],
             [
                 'attribute' => '事件图像',
                 'format'    => 'raw',

@@ -2,6 +2,7 @@
 namespace ccheng\eventmanager\widgets;
 
 use ccheng\eventmanager\EventAsset;
+use ccheng\eventmanager\helpers\StringHelper;
 use yii\base\Widget;
 
 class Timeline extends Widget
@@ -56,6 +57,16 @@ class Timeline extends Widget
                 console.log('changed')
             }
         });
+        $('div.incident-record .content_more').hide();
+        $('.event_content_show').bind('click',function() {
+            $(this).parents('span.content_desc').hide();
+            $(this).parents('div.incident-record').children('.content_more').show();
+        });
+        $('.event_content_hide').bind('click',function() {
+            $(this).parents('span.content_more').hide();
+            $(this).parents('div.incident-record').children('.content_desc').show();
+           
+        });
 
     })
 JS;
@@ -109,7 +120,7 @@ HTML;
         foreach ($this->events as $date => $data) {
             $event_template = <<<HTML
 			<div class="shaft-detail-cont" @display>
-				<p class="timer-year"><i class="icon-year"></i><span>@date</span></p>
+				<p class="timer-year" style="margin: 0px"><i class="icon-year"></i><span>@date</span></p>
                     @event
 			</div>
 HTML;
@@ -124,15 +135,22 @@ HTML;
             foreach ($data as $event) {
                 $content_template = <<<HTML
         <div class="month-detail-box">
-            <span class="month-title"></span>
-            <p class="incident-record">@event_content</p>
+            <span class="month-title">@time</span>
+            <div class="incident-record">@event_content</div>
         </div>
 HTML;
+                $desc=StringHelper::cut_str(strip_tags($event['event_content']),128,'....<a href="javascript:void(0)" class="event_content_show">查看更多</a>');
+                $event['event_content']=<<<CONTENT
+                <span class="content_desc">$desc</span><span class="content_more">{$event['event_content']}<a href="javascript:void(0)" class="event_content_hide">隐藏详情</a></span><br/><span style="color:#778899">By {$event['event_author']}</span>
+CONTENT;
+
                 if($event['event_image']){
                     $event['event_content']='<a href="javascript:void(0)" data-magnify="gallery" data-group="g1" data-src="'.$event['event_image'].'" data-caption="'.$event['event_name'].'">
             <img class="content_img" src="'.$event['event_image'].'">
         </a>'.$event['event_content'];
                 }
+
+                $content_template = (str_replace('@time', date('H:i',strtotime($event['event_create_at'])), $content_template));
                 $event_content .= (str_replace('@event_content', $event['event_content'], $content_template));
             }
             if(!$event_content){

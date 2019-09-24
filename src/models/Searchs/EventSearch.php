@@ -98,7 +98,8 @@ class EventSearch extends BizEvent
         $this->load($params);
 
         $query->where(['event_date' => $this->event_date]);
-        $query->select(['event_name','event_date','event_from_system','event_author','event_content','event_image']);
+        $query->select(['event_name','event_date','event_from_system','event_author','event_content','event_image','event_create_at']);
+        $query->orderBy('event_create_at');
         $data=$query->asArray()->all();
         $group_data=[];
         $event_week=DateHelper::getNowWeeks('','Y-m-d');

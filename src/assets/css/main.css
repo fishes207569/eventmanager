@@ -11,13 +11,13 @@
 
 .timer-shaft-content{width:100%;margin-top:45px;overflow: hidden;font-size:0;box-sizing:border-box;white-space: nowrap;}
 .shaft-detail-cont{display: none;width:100%;}
-.timer-year{padding-left:20px;font-weight:bold;color:#333;font-size:0;}
+.timer-year{padding-left:34px;font-weight:bold;color:#333;font-size:0;}
 .icon-year{display: inline-block;vertical-align:middle;width:33px;height:40px;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAoCAMAAABHNWOVAAAAXVBMVEUAAAD/8un/nlr/nVf/nFb/8+v//Pr/mlP/xp3/+fT/q3H/5dP//v3/kEP/k0f/q2//rnX/u4r/yqP/zqv/07T/lk3/oV//sXv/2sD/3cT/6Nf/+vb/jT3/vI7/jT2TeXvaAAAAHnRSTlMAHdnd3xoH4oAOuzsC9/K+tpp4bmPq0q5STTQMv5WpMmRZAAAAz0lEQVQ4y4XT6w6DIAyG4W/IxOPm2alb7/8yRxYZKtq+v58U0gB8RZ5kpqRSZ0leIGxpNfmiNj6Cl6F9ZsK2uKawejMmfdJZ2fKfsIKgp5tS01Wf9ZJ03fQ7wzBCxwBa4uoAKFYoYCa+GYkgGlSCqKAFofAQxAMkhVKcoQWhkQmiEveRIBdEjsKwwBRAIywdSHsG9ClsnfA8bOMlGN1nGC7AkGLtrk6BugMMcYAhDngiAOCm9uAGBCQiX2QBQzwICQcccYAl2gKGaAFY8j6CL+fRaJEdIOkDAAAAAElFTkSuQmCC) no-repeat;background-size: cover;}
 .timer-year span{display: inline-block;vertical-align:middle;margin-left:18px;font-size:24px;}
 .month-detail-box{position:relative;width:100%;min-height:93px;padding-top:30px;font-size:0;box-sizing: border-box;white-space: normal;}
-.month-detail-box:before{content: '';position:absolute;top:0;left:36.5px;height:100%;border-right:1px dashed #ff8d3d;}
+.month-detail-box:before{content: '';position:absolute;top:0;left:50px;height:100%;border-right:1px dashed #ff8d3d;}
 .month-detail-box .month-title{position:absolute;font-size:16px;font-weight: bold;color:#333;}
-.month-detail-box .month-title:before{content: '';position:absolute;top:50%;left:30px;width:13px;height:13px;margin-top:-6.5px;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAMAAABFNRROAAAAM1BMVEUAAAD/5NL/s4D/vI7/l1H//fz/jUD/lU7/l1L/uIn/s4H/////iz3/8OX/xp//kET/5dPqJ+BtAAAAC3RSTlMAO6eV5QT56OSbpnmjN60AAABVSURBVAjXXY5bEoAgDAMLBQSbttz/tIKo47B/mT6yNAixlhoDTTJjwXmkBjcVNUcba/Auk+4IdMJkYYh0QJ+kSATIC8o2i/+77Sfx18eby/JMJd2eFxgBBdDxrlS0AAAAAElFTkSuQmCC) no-repeat;background-size: cover;}
+.month-detail-box .month-title:before{content: '';position:absolute;top:50%;left:45px;width:13px;height:13px;margin-top:-6.5px;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAMAAABFNRROAAAAM1BMVEUAAAD/5NL/s4D/vI7/l1H//fz/jUD/lU7/l1L/uIn/s4H/////iz3/8OX/xp//kET/5dPqJ+BtAAAAC3RSTlMAO6eV5QT56OSbpnmjN60AAABVSURBVAjXXY5bEoAgDAMLBQSbttz/tIKo47B/mT6yNAixlhoDTTJjwXmkBjcVNUcba/Auk+4IdMJkYYh0QJ+kSATIC8o2i/+77Sfx18eby/JMJd2eFxgBBdDxrlS0AAAAAElFTkSuQmCC) no-repeat;background-size: cover;}
 .incident-record{display:inline-block;padding-left:71px;line-height:2;font-size:14px;color:#333;}
 .incident-record a{font-size:14px;color:#1d69a3;}
 .content_img{width:50px;height:50px;}
