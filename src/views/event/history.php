@@ -15,7 +15,7 @@ $config = call_user_func(\Yii::$app->params['event_manager_config']);
     <div class="box">
         <div class="box-header with-border" style="height:45px">
             <h3 class="box-title">事件历史</h3>
-            <div class="box-tools pull-right"><?= \kartik\widgets\DatePicker::widget([
+            <div class="box-tools pull-right" style="width:150px;z-index:9999"><?= \kartik\widgets\DatePicker::widget([
                     'name'          => 'event_start_date',
                     'value'         => \Yii::$app->request->getQueryParam('event_start_date', date('Y-m-d')),
                     'options'       => [
