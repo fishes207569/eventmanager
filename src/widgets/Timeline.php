@@ -10,9 +10,19 @@ class Timeline extends Widget
     public $week_days;
     public $events;
     public $target;
+    public $event_config;
+    public $event_colors;
+    public $event_levels;
 
     public function run()
     {
+
+        $this->event_colors=array_map(function ($item) {
+            return $item['color'];
+        }, $this->event_config);
+        $this->event_levels=array_map(function ($item) {
+            return $item['label'];
+        }, $this->event_config);
         $this->registerAssets();
 
         return $this->renderWidgetContent();
@@ -133,15 +143,29 @@ HTML;
             $event_html[$date] = str_replace('@date', $format_date, $event_template);
             $event_content     = '';
             foreach ($data as $event) {
+                if(array_key_exists($event['event_level'],$this->event_colors)){
+                    $event_style='background-color:'.$this->event_colors[$event['event_level']];
+                    $event_level=$this->event_levels[$event['event_level']];
+                }else{
+                    $event_style='';
+                    $event_level=$event['event_level'];
+                }
                 $content_template = <<<HTML
         <div class="month-detail-box">
-            <span class="month-title">@time</span>
+            <span class="month-title"><span class="event_level_icon" title="$event_level" style="$event_style"></span>@time</span>
             <div class="incident-record">@event_content</div>
         </div>
 HTML;
-                $desc=StringHelper::cut_str(strip_tags($event['event_content']),128,'....<a href="javascript:void(0)" class="event_content_show">查看更多</a>');
+                if(mb_strlen(strip_tags($event['event_content']))>128){
+                    $desc=StringHelper::cut_str(strip_tags($event['event_content']),128,'<br/><a href="javascript:void(0)" class="event_content_show pull-right" title="查看更多">查看更多</a>');
+                }else if(substr_count($event['event_content'],'<img')){
+                    $desc=strip_tags($event['event_content']).'<br/><a href="javascript:void(0)" class="event_content_show pull-right" title="查看更多">查看更多</a>';
+                }else{
+                    $desc=strip_tags($event['event_content']);
+                }
+
                 $event['event_content']=<<<CONTENT
-                <span class="content_desc">$desc</span><span class="content_more">{$event['event_content']}<a href="javascript:void(0)" class="event_content_hide">隐藏详情</a></span><br/><span style="color:#778899">By {$event['event_author']}</span>
+                <span class="content_desc">$desc</span><span class="content_more">{$event['event_content']}<a href="javascript:void(0)" class="event_content_hide pull-right">隐藏详情</a></span><br/><span style="color:gray">作者：{$event['event_author']}</span>
 CONTENT;
 
                 if($event['event_image']){
@@ -150,7 +174,7 @@ CONTENT;
         </a>'.$event['event_content'];
                 }
 
-                $content_template = (str_replace('@time', date('H:i',strtotime($event['event_create_at'])), $content_template));
+                $content_template = (str_replace('@time', date('H:i',strtotime($event['event_date'].' '.$event['event_time'])), $content_template));
                 $event_content .= (str_replace('@event_content', $event['event_content'], $content_template));
             }
             if(!$event_content){

@@ -33,7 +33,8 @@ class EventSearch extends BizEvent
                     'event_from_system',
                     'event_author',
                     'start_date',
-                    'end_date'
+                    'end_date',
+                    'event_level'
                 ],
                 'safe',
             ],
@@ -85,9 +86,10 @@ class EventSearch extends BizEvent
         $query->andFilterWhere(['between','event_date',$this->start_date,$this->end_date]);
         $query->andFilterWhere(['like', 'event_name', $this->event_name])
             ->andFilterWhere(['like', 'event_content', $this->event_content])
-            ->andFilterWhere(['like', 'event_month', $this->event_month])
-            ->andFilterWhere(['like', 'event_from_system', $this->event_from_system])
-            ->andFilterWhere(['like', 'event_author', $this->event_author]);
+            ->andFilterWhere(['=', 'event_month', $this->event_month])
+            ->andFilterWhere(['=', 'event_from_system', $this->event_from_system])
+            ->andFilterWhere(['like', 'event_author', $this->event_author])
+            ->andFilterWhere(['=', 'event_level', $this->event_level]);
 
         return $dataProvider;
     }
@@ -97,9 +99,9 @@ class EventSearch extends BizEvent
         $query = BizEvent::find();
         $this->load($params);
 
-        $query->where(['event_date' => $this->event_date]);
-        $query->select(['event_name','event_date','event_from_system','event_author','event_content','event_image','event_create_at']);
-        $query->orderBy('event_create_at');
+        $query->where(['DATE(event_date)' => $this->event_date]);
+        $query->orderBy('event_date');
+        $sql=$query->createCommand()->getRawSql();
         $data=$query->asArray()->all();
         $group_data=[];
         foreach ($this->event_date as $week){

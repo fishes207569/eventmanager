@@ -22,13 +22,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->event_content;
                 },
             ],
-            [
-                'attribute' => '事件图像',
-                'format'    => 'raw',
-                'value'     => function ($model) {
-                    return '<img style="height:30px;width:30px" src="' . $model->event_image . '" />';
-                },
-            ],
             'event_year',
             'event_month',
             'event_date',
