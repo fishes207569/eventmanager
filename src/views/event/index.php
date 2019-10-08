@@ -133,7 +133,6 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
                         }
                     },
                 ],
-                'event_from_system',
                 'event_author',
                 'event_create_at',
             ],
