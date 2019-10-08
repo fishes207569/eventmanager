@@ -59,6 +59,7 @@ use kartik\widgets\ActiveForm;
                 'allowClear' => true,
             ],
         ])->label(false); ?>
+
         <?php echo $form->field($model, 'event_author')
             ->textInput(['maxLength' => 32, 'placeholder' => '添加人员'])
             ->label(false) ?>
@@ -101,7 +102,9 @@ use kartik\widgets\ActiveForm;
         </div>
         <div class="form-group">
             <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
-            <?= Html::resetButton('重置', ['class' => 'btn btn-default']) ?>
+            <?= Html::resetButton('重置', ['class' => 'btn btn-default','onclick'=>new \yii\web\JsExpression("(function(){
+                $('select[name^=EventSearch]').val('').trigger('change');
+            })()")]) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

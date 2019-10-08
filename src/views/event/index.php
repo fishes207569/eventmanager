@@ -23,7 +23,7 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
             'columns'      => [
                 [
                     'class'          => 'yii\grid\ActionColumn',
-                    'template'       => '{update}&nbsp;&nbsp;{delete}',
+                    'template'       => '{update}&nbsp;&nbsp;{delete}&nbsp;&nbsp;{view}',
                     'header'         => '操作',
                     'buttons'        => [
                         'update' => function ($url, $item, $key) {
@@ -47,6 +47,26 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
                                                     window.location.reload();
                                                 }
                                             }
+                                        });
+                                    })(this)"),
+                            ]);
+                        },
+                        'view'=> function ($url, $item, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'javascript:void(0);', [
+                                'data-url' => $url,
+                                'onclick'  => new \yii\web\JsExpression("(function (thi) {
+                                    let url=$(thi).data('url');
+                                    window.top.layer_from_index = window.top.layer.open({
+                                        type: 2,
+                                        title: '<h4>事件详情</h4>',
+                                        shadeClose: false,
+                                        scrollbar: false,
+                                        maxmin: true,
+                                        shade: 0.8,
+                                        area: ['1000px', '750px'],
+                                        content: [
+                                            url
+                                        ]
                                         });
                                     })(this)"),
                             ]);
