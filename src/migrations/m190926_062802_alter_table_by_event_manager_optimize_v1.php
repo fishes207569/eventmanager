@@ -7,8 +7,8 @@ class m190926_062802_alter_table_by_event_manager_optimize_v1 extends Migration
     public function safeUp()
     {
         $sql = <<<SQL
-            ALTER TABLE `biz_event` ADD COLUMN `event_level` varchar(32) NOT NULL DEFAULT 'success' COMMENT '事件级别',
-  `event_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '添加用户',`event_time` time NOT NULL COMMENT '事件发生时间';
+            ALTER TABLE `biz_event` ADD COLUMN (`event_level` varchar(32) NOT NULL DEFAULT 'success' COMMENT '事件级别',
+  `event_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '添加用户',`event_time` time NOT NULL COMMENT '事件发生时间');
 SQL;
         $this->execute($sql);
     }
