@@ -35,6 +35,7 @@ use kartik\widgets\ActiveForm;
             'theme'         => Select2::THEME_KRAJEE,
             'options'       => [
                 'placeholder' => '选择来源系统',
+                'data-val'=>$model->event_from_system
             ],
             'pluginOptions' => [
                 'allowClear' => true,
@@ -54,6 +55,7 @@ use kartik\widgets\ActiveForm;
             'hideSearch'    => true,
             'options'       => [
                 'placeholder' => '选择事件级别',
+                'data-val'=>$model->event_level
             ],
             'pluginOptions' => [
                 'allowClear' => true,
@@ -103,7 +105,9 @@ use kartik\widgets\ActiveForm;
         <div class="form-group">
             <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
             <?= Html::resetButton('重置', ['class' => 'btn btn-default','onclick'=>new \yii\web\JsExpression("(function(){
-                $('select[name^=EventSearch]').val('').trigger('change');
+                $('select[name^=EventSearch]').each(function(i){
+                    $(this).val($(this).data('val')).trigger('change');
+                });
             })()")]) ?>
         </div>
 
