@@ -108,14 +108,25 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
                     },
                 ],
                 [
+                    'attribute'      => 'event_tags',
+                    'format'         => 'raw',
+                    'value'          => function ($model) {
+                        return StringHelper::cut_str(strip_tags($model->event_tags), 30);
+                    },
+                    'contentOptions' => function ($model, $key, $index, $column) {
+                        return [
+                            'title' => strip_tags($model->event_tags),
+                            'alt'   => strip_tags($model->event_tags),
+                        ];
+                    },
+                ],
+                [
                     'attribute' => 'event_level',
                     'format'    => 'raw',
                     'value'     => function ($model) use ($config) {
 
                         if (isset($config['event_level']) && !empty($config['event_level'])) {
-                            return array_map(function ($item){
-                                return $item['label'];
-                            },$config['event_level'])[$model->event_level];
+                            return \ccheng\eventmanager\helpers\ConfigHelper::getEventLevelConfig('label')[$model->event_level];
                         } else {
                             return $model->event_level;
                         }

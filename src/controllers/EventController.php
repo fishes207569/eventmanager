@@ -3,6 +3,7 @@
 namespace ccheng\eventmanager\controllers;
 
 use ccheng\eventmanager\common\simple_html_dom\SimpleHtmlDom;
+use ccheng\eventmanager\helpers\ConfigHelper;
 use ccheng\eventmanager\helpers\DateHelper;
 use Yii;
 use ccheng\eventmanager\models\BizEvent;
@@ -102,12 +103,8 @@ class EventController extends Controller
         return $this->render('create', [
             'model' => $model,
             'event_systems'=>$config['event_system'],
-            'event_levels'=>array_map(function ($item){
-                return $item['label'];
-            },$config['event_level']),
-            'event_colors'=>array_map(function ($item){
-                return $item['color'];
-            },$config['event_level'])
+            'event_levels'=>ConfigHelper::getEventLevelConfig('label'),
+            'event_colors'=>ConfigHelper::getEventLevelConfig('color')
         ]);
 
     }
@@ -135,12 +132,8 @@ class EventController extends Controller
         return $this->render('update', [
             'model' => $model,
             'event_systems'=>$config['event_system'],
-            'event_levels'=>array_map(function ($item){
-                return $item['label'];
-            },$config['event_level']),
-            'event_colors'=>array_map(function ($item){
-                return $item['color'];
-            },$config['event_level'])
+            'event_levels'=>ConfigHelper::getEventLevelConfig('label'),
+            'event_colors'=>ConfigHelper::getEventLevelConfig('color')
         ]);
 
     }

@@ -23,7 +23,13 @@
                     ],end: function () {
                         let url=window.location.href;
                         if(url.indexOf('event/event')!=-1){
-                            window.location.reload();
+                            try {
+                                window.iframeRunFunction('/event/event/history', function (siWindow) {
+                                    siWindow.location.reload();
+                                });
+                            }catch (e) {
+                                window.location.reload();
+                            }
                         }
                     }
                 });

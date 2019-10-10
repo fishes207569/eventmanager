@@ -74,6 +74,13 @@ use kartik\widgets\ActiveForm;
         ])
             ->label(false) ?>
 
+        <?= $form->field($model, 'event_tags', [
+            'inputOptions' => [
+                'class'       => 'form-control',
+            ],
+        ])
+            ->label(false) ?>
+
         <div class="form-group" style="width: 300px;">
             <?php
             echo(DatePicker::widget([

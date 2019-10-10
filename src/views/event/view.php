@@ -1,5 +1,6 @@
 <?php
 
+use ccheng\eventmanager\helpers\ConfigHelper;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -14,6 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            'event_date',
+            'event_time',
             'event_name',
             [
                 'attribute' => '事件内容',
@@ -22,9 +25,21 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->event_content;
                 },
             ],
+            [
+                'attribute' => '事件标签',
+                'format'    => 'raw',
+                'value'     => function ($model) {
+                    $tagHtml = '';
+                    $color   = ConfigHelper::getTagColor($model->event_level);
+                    $tags=explode(',',$model->event_tags);
+                    foreach ($tags as $tag) {
+                        $tagHtml .= "<span class='label' style='background-color: {$color};margin:0 2px'>$tag</span>";
+                    }
+                    return $tagHtml;
+                },
+            ],
             'event_year',
             'event_month',
-            'event_date',
             'event_create_at',
             'event_update_at',
             'event_from_system',

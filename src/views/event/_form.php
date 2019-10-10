@@ -163,6 +163,12 @@ STYLE;
         ],
     ]) ?>
 
+    <?= $form->field($model, "event_tags")->widget(\rogeecn\TagEditor\EditorWidget::className(),[
+            "clientOptions"=>[
+                    'placeholder'=>'点击录入标签'
+            ]
+    ]) ?>
+
     <?= $form->field($model, 'event_author')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

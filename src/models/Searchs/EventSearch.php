@@ -34,7 +34,8 @@ class EventSearch extends BizEvent
                     'event_author',
                     'start_date',
                     'end_date',
-                    'event_level'
+                    'event_level',
+                    'event_tags'
                 ],
                 'safe',
             ],
@@ -86,6 +87,7 @@ class EventSearch extends BizEvent
         $query->andFilterWhere(['between','event_date',$this->start_date,$this->end_date]);
         $query->andFilterWhere(['like', 'event_name', $this->event_name])
             ->andFilterWhere(['like', 'event_content', $this->event_content])
+            ->andFilterWhere(['like', 'event_tags', $this->event_tags])
             ->andFilterWhere(['=', 'event_month', $this->event_month])
             ->andFilterWhere(['=', 'event_from_system', $this->event_from_system])
             ->andFilterWhere(['like', 'event_author', $this->event_author])
