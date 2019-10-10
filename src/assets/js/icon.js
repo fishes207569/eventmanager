@@ -5,9 +5,9 @@
     }
     $(function () {
         let icon = $('<div id="float_icon">+</div>');
-        let event_user=$('body').data('event_user');
-        let now_user=String($('body').data('now_user'));
-        if(event_user.length && event_user.indexOf(now_user)!=-1){
+        let event_user = $('body').data('event_user');
+        let now_user = String($('body').data('now_user'));
+        if (event_user.length && event_user.indexOf(now_user) != -1) {
             icon.appendTo('body');
             icon.bind('click', function () {
                 window.top.layer_from_index = layer.open({
@@ -20,17 +20,19 @@
                     area: ['1000px', '750px'],
                     content: [
                         "/event/event/create"
-                    ],end: function () {
-                        let url=window.location.href;
-                        if(url.indexOf('event/event')!=-1){
-                            try {
-                                window.iframeRunFunction('/event/event/history', function (siWindow) {
-                                    siWindow.location.reload();
-                                });
-                            }catch (e) {
+                    ], end: function () {
+                        let url = window.location.href;
+
+                        try {
+                            window.iframeRunFunction('/event/event/history', function (siWindow) {
+                                siWindow.location.reload();
+                            });
+                        } catch (e) {
+                            if (url.indexOf('event/event') != -1) {
                                 window.location.reload();
                             }
                         }
+
                     }
                 });
             });
