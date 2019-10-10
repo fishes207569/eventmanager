@@ -1,4 +1,4 @@
-JsonDiff for Yii2
+Event manager for Yii2
 =================
 Event manager By Biz
 
@@ -50,7 +50,7 @@ return [
 http://localhost/path/to/index.php?r=event/event/index
 ```
 
-时间时间线路由
+事件时间线路由
 ```
 http://localhost/path/to/index.php?r=event/event/history
 ```

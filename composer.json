@@ -22,7 +22,7 @@
         "rmrevin/yii2-fontawesome": "~2.9",
         "kucha/ueditor": "^1.21",
         "qcloud/cos-sdk-v5": "^1.3",
-        "rogeecn/yii2-tag-editor": "^1.0",
+        "rogeecn/yii2-tag-editor": "^1.0"
     },
     "autoload": {
         "psr-4": {
