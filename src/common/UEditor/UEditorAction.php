@@ -136,7 +136,7 @@ class UEditorAction extends \kucha\ueditor\UEditorAction
         $ret = QCloudSdk::upload($qcloud_config->bucket, $file_path, '/event_images/' . StringHelper::genUniqueString() . $extension);
         if (isset($ret['code'])) {
             if ($ret['code'] == 0) {
-                $file_info['url']=QCloudSdk::signAccessUrl($ret['data']['access_url']);
+                $file_info['url']=QCloudSdk::signAccessUrl($ret['data']['access_url'],null);
             } else {
                 throw new Exception(sprintf("上传到到腾讯云失败 - %s", $ret['message']));
             }

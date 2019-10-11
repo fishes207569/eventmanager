@@ -11,19 +11,16 @@ class Timeline extends Widget
     public $week_days;
     public $events;
     public $target;
-    public $event_config;
     public $event_colors;
     public $event_levels;
+    public $event_systems;
 
     public function run()
     {
 
-        $this->event_colors = array_map(function ($item) {
-            return $item['color'];
-        }, $this->event_config);
-        $this->event_levels = array_map(function ($item) {
-            return $item['label'];
-        }, $this->event_config);
+        $this->event_colors  = ConfigHelper::getEventLevelConfig('color');
+        $this->event_levels  = ConfigHelper::getEventLevelConfig('label');
+        $this->event_systems = ConfigHelper::getEventSystemConfig();
         $this->registerAssets();
 
         return $this->renderWidgetContent();
@@ -68,15 +65,38 @@ class Timeline extends Widget
                 console.log('changed')
             }
         });
-        $('div.incident-record .content_more').hide();
+        $('div.event_content>span.content_more').hide();
         $('.event_content_show').bind('click',function() {
             $(this).parents('span.content_desc').hide();
-            $(this).parents('div.incident-record').children('.content_more').show();
+            $(this).parents('div.event_content').children('.content_more').show();
         });
         $('.event_content_hide').bind('click',function() {
             $(this).parents('span.content_more').hide();
-            $(this).parents('div.incident-record').children('.content_desc').show();
+            $(this).parents('div.event_content').children('.content_desc').show();
            
+        });
+        $('.event_update').bind('click',function(){
+            let id=$(this).data('id');
+            let start_date=$(this).data('date');
+            window.top.layer_from_index = window.top.layer.open({
+                                        type: 2,
+                                        title: '<h4>更新事件</h4>',
+                                        shadeClose: false,
+                                        scrollbar: false,
+                                        maxmin: true,
+                                        shade: 0.8,
+                                        area: ['1000px', '750px'],
+                                        content: [
+                                            '/event/event/update?id='+id
+                                        ],end: function () {
+                                                let url=window.location.href;
+                                                //let url=window.location.pathname+'?event_start_date='+start_date;
+                                                if(url.indexOf('event/event')!=-1){
+                                                    window.location.reload();
+                                                    //window.location.href=url;
+                                                }
+                                            }
+                                        });
         });
 
     })
@@ -150,25 +170,39 @@ HTML;
                     $event_style = '';
                     $event_level = $event['event_level'];
                 }
+                $tag_is_show=$event['event_tags']?'':'hide';
                 $content_template = <<<HTML
         <div class="month-detail-box">
-            <span class="month-title"><span class="event_level_icon" title="$event_level" style="$event_style"></span>@time</span>
-            <div class="incident-record">@event_content</div>
+            <span class="month-title">
+                <span class="event_level_icon" title="$event_level" style="$event_style"></span>
+                @time
+            </span>
+            <div class="incident-record">
+            <div class="event_name" style="font-weight: bold">标题：{$event['event_name']}</div>
+            <div class="event_content"><span style="font-weight: bold">内容：</span><br/>@event_content</div>
+            <div class="event_from_system"><span style="font-weight: bold">来源：</span>{$this->event_systems[$event['event_from_system']]}</div>
+            <div class="event_tags $tag_is_show"><span style="font-weight: bold">标签：</span>@tags</div>
+            <div>
+                <span style="color:gray">作者：{$event['event_author']}</span>
+            </div>
+            </div>
         </div>
 HTML;
+                $edit_is_show     = $event['event_user_id'] == \Yii::$app->user->getId() ? '' : 'hide';
                 if (mb_strlen(strip_tags($event['event_content'])) > 128) {
-                    $desc = StringHelper::cut_str(strip_tags($event['event_content']), 128, '<br/><a href="javascript:void(0)" class="event_content_show pull-right" title="查看更多">查看更多</a>');
+                    $desc = StringHelper::cut_str(strip_tags($event['event_content']), 128, '...<br/><a href="javascript:void(0)" class="event_content_show pull-right glyphicon glyphicon-eye-open" style="margin-left: 30px" title="查看更多"></a>');
                 } else {
                     if (substr_count($event['event_content'], '<img')) {
-                        $desc = strip_tags($event['event_content']) . '<br/><a href="javascript:void(0)" class="event_content_show pull-right" title="查看更多">查看更多</a>';
+                        $desc = strip_tags($event['event_content']) . '...<br/><a href="javascript:void(0)" class="glyphicon glyphicon-eye-open event_content_show pull-right" style="margin-left: 30px" title="查看更多"></a>';
                     } else {
                         $desc = strip_tags($event['event_content']);
                     }
                 }
-                $tags = $this->buildTags($event);
+                $edit_action = '&nbsp;&nbsp;<a href="javascript:void(0)" data-id="' . $event['event_id'] . '" data-date="'.$event['event_date'].'" class="glyphicon glyphicon-pencil event_update pull-right ' . $edit_is_show . '"  title="编辑"></a>';
+                $desc        .= $edit_action;
 
                 $event['event_content'] = <<<CONTENT
-                <span class="content_desc">$desc</span><span class="content_more">{$event['event_content']}<a href="javascript:void(0)" class="event_content_hide pull-right">隐藏详情</a></span><p class="event_tags">{$tags}</p><br/><span style="color:gray">作者：{$event['event_author']}</span>
+                <span class="content_desc">$desc</span><span class="content_more">{$event['event_content']}<a href="javascript:void(0)" class="event_content_hide pull-right glyphicon glyphicon-eye-close" style="margin-left: 30px" title="隐藏详情"></a>$edit_action</span>
 CONTENT;
 
                 if ($event['event_image']) {
@@ -177,6 +211,7 @@ CONTENT;
         </a>' . $event['event_content'];
                 }
 
+                $content_template = (str_replace('@tags', $this->buildTags($event), $content_template));
                 $content_template = (str_replace('@time', date('H:i', strtotime($event['event_date'] . ' ' . $event['event_time'])), $content_template));
                 $event_content    .= (str_replace('@event_content', $event['event_content'], $content_template));
             }
@@ -198,10 +233,11 @@ EMPTY;
     {
         $tagHtml = '';
         $color   = ConfigHelper::getTagColor($event['event_level']);
-        $tags=explode(',',$event['event_tags']);
+        $tags    = explode(',', $event['event_tags']);
         foreach ($tags as $tag) {
             $tagHtml .= "<span class='label' style='background-color: {$color};margin:0 2px'>$tag</span>";
         }
+
         return $tagHtml;
     }
 }

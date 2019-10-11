@@ -22,6 +22,7 @@ class EventAsset extends AssetBundle
     ];
     public $js = [
         'js/sjz.js'
+
     ];
 
 

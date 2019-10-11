@@ -8,7 +8,6 @@ use ccheng\eventmanager\widgets\Timeline;
 
 $this->title                   = '事件墙';
 $this->params['breadcrumbs'][] = $this->title;
-$config = call_user_func(\Yii::$app->params['event_manager_config']);
 ?>
 
 <div class="history-view">
@@ -44,8 +43,7 @@ $config = call_user_func(\Yii::$app->params['event_manager_config']);
                         <?= Timeline::widget([
                             'events'       => $events,
                             'week_days'    => $week_days,
-                            'target'       => $now_date,
-                            'event_config' => $config['event_level'],
+                            'target'       => $now_date
                         ]); ?>
                     </div>
                 </div>

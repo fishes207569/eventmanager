@@ -8,7 +8,6 @@ use ccheng\eventmanager\models\BizEvent;
 use kartik\datetime\DateTimePicker;
 
 \ccheng\eventmanager\AdminLteAsset::register($this);
-
 /* @var $this yii\web\View */
 /* @var $model ccheng\eventmanager\models\BizEvent */
 /* @var $form yii\widgets\ActiveForm */
@@ -137,7 +136,7 @@ STYLE;
         'options'       => ['placeholder' => '事件发生时间'],
         'pluginOptions' => [
             'autoclose' => true,
-            'todayBtn' => true
+            'todayBtn'  => true,
         ],
     ]) ?>
 
@@ -163,10 +162,10 @@ STYLE;
         ],
     ]) ?>
 
-    <?= $form->field($model, "event_tags")->widget(\rogeecn\TagEditor\EditorWidget::className(),[
-            "clientOptions"=>[
-                    'placeholder'=>'点击录入标签'
-            ]
+    <?= $form->field($model, "event_tags")->widget(\rogeecn\TagEditor\EditorWidget::className(), [
+        "clientOptions" => [
+            'placeholder' => '点击录入标签，以英文逗号间隔',
+        ],
     ]) ?>
 
     <?= $form->field($model, 'event_author')->textInput(['maxlength' => true]) ?>

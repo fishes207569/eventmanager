@@ -72,22 +72,6 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
                             ]);
                         },
                     ],
-                    'visibleButtons' => [
-                        'update' => function ($model) {
-                            if (\Yii::$app->user->identity) {
-                                return $model->event_user_id == \Yii::$app->user->identity->getId();
-                            } else {
-                                return false;
-                            }
-                        },
-                        'delete' => function ($model) {
-                            if (\Yii::$app->user->identity) {
-                                return $model->event_user_id == \Yii::$app->user->identity->getId();
-                            } else {
-                                return false;
-                            }
-                        },
-                    ],
                 ],
 
                 'event_id',
