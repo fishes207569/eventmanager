@@ -19,14 +19,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'event_time',
             'event_name',
             [
-                'attribute' => '事件内容',
+                'attribute'=>'event_content',
                 'format'    => 'raw',
                 'value'     => function ($model) {
                     return $model->event_content;
                 },
             ],
             [
-                'attribute' => '事件标签',
+                'attribute'=>'event_tags',
                 'format'    => 'raw',
                 'value'     => function ($model) {
                     $tagHtml = '';
@@ -42,7 +42,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'event_month',
             'event_create_at',
             'event_update_at',
-            'event_from_system',
+            [
+                'attribute'=>'event_from_system',
+                'format'    => 'raw',
+                'value'     => function ($model) {
+                    return ConfigHelper::getEventSystemConfig()[$model->event_from_system];
+                },
+            ],
             'event_author',
         ],
     ]) ?>
