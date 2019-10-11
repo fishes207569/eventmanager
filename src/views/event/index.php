@@ -48,7 +48,9 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
                                                 }
                                             }
                                         });
+                                         window.top.layer.full(window.top.layer_from_index);
                                     })(this)"),
+
                             ]);
                         },
                         'view'=> function ($url, $item, $key) {
@@ -68,6 +70,7 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
                                             url
                                         ]
                                         });
+                                    window.top.layer.full(window.top.layer_from_index);
                                     })(this)"),
                             ]);
                         },

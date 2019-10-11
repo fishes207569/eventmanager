@@ -97,6 +97,7 @@ class Timeline extends Widget
                                                 }
                                             }
                                         });
+            window.top.layer.full(window.top.layer_from_index);
         });
 
     })
