@@ -103,7 +103,7 @@ qcloud_config:
 |  接口要求项   |          值              |
 |-------------|--------------------------|
 | Http请求方式 | POST                     |
-| URL         | /event/create |
+| URL         | /event/notifying |
 
 - **查询参数定义**
 `查询参数为JSON数据`
