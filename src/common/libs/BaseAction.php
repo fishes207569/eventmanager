@@ -15,7 +15,7 @@ use yii\web\NotFoundHttpException;
 
 class BaseAction extends \yii\rest\Action
 {
-    public function getParams()
+    public static function getParams()
     {
         $params = Yii::$app->getRequest()->getBodyParams();
         if (!key_exists('key', $params) || !key_exists('from_system', $params) || !key_exists('data', $params) || (!key_exists('type', $params) || $params['type'] != 'EventNotify')) {
