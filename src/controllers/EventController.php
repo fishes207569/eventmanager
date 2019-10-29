@@ -5,6 +5,8 @@ namespace ccheng\eventmanager\controllers;
 use ccheng\eventmanager\common\simple_html_dom\SimpleHtmlDom;
 use ccheng\eventmanager\helpers\ConfigHelper;
 use ccheng\eventmanager\helpers\DateHelper;
+use ccheng\eventmanager\models\Searchs\EventDaySearch;
+use common\helpers\Dh;
 use Yii;
 use ccheng\eventmanager\models\BizEvent;
 use ccheng\eventmanager\models\Searchs\EventSearch;
@@ -46,6 +48,28 @@ class EventController extends Controller
         return $this->render('index', [
             'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+    public function actionList(){
+        $searchModel  = new EventSearch();
+        $Events = $searchModel->searchList(Yii::$app->request->queryParams);
+        
+        return $this->render('list', [
+            'searchModel'  => $searchModel,
+            'events' => $Events,
+        ]);
+    }
+    public function actionDetail(){
+        $searchModel  = new EventDaySearch();
+        $queryParams=Yii::$app->request->queryParams;
+        if(!isset($queryParams['EventDaySearch']['event_date']) || empty($queryParams['EventDaySearch']['event_date'])){
+            $queryParams['EventDaySearch']['event_date']=Dh::todayDate();
+        }
+        $Events = $searchModel->search($queryParams);
+
+        return $this->render('detail', [
+            'model'  => $searchModel,
+            'events' => $Events,
         ]);
     }
 
@@ -150,7 +174,7 @@ class EventController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect($_SERVER['HTTP_REFERER']);
     }
 
     /**

@@ -15,7 +15,7 @@ $this->title                   = '事件列表';
 $this->params['breadcrumbs'][] = $this->title;
 $config                        = call_user_func(\Yii::$app->params['event_manager_config']);
 ?>
-        <?= $this->render('_search', ['model' => $searchModel, 'config' => $config]); ?>
+        <?= $this->render('_search', ['model' => $searchModel, 'config' => $config,'action'=>'index']); ?>
 <div class="box box-primary">
         <?= GridView::widget([
             'dataProvider' => $dataProvider,

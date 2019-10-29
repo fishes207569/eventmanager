@@ -2,11 +2,13 @@
 
 namespace ccheng\eventmanager\models\Searchs;
 
+use ccheng\eventmanager\helpers\ConfigHelper;
 use ccheng\eventmanager\helpers\DateHelper;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use ccheng\eventmanager\models\BizEvent;
+use yii\helpers\Url;
 
 /**
  * EventSearch represents the model behind the search form about `backend\models\BizEvent`.
@@ -115,5 +117,28 @@ class EventSearch extends BizEvent
             }
         }
         return $group_data;
+    }
+    public function searchList($params){
+        /** @var  $dataProvider ActiveDataProvider */
+        $dataProvider=$this->search($params);
+        $dataProvider->pagination=false;
+        /** @var  $models \yii\db\ActiveRecord */
+        $models=$dataProvider->getModels();
+
+        $Events=[];
+        $level_colors=ConfigHelper::getEventLevelConfig('color');
+        foreach ($models as $item){
+            /** @var  $item BizEvent */
+            $Event = new \yii2fullcalendar\models\Event([
+                'id'=>$item->event_id,
+                'title'=>$item->event_name,
+                'start'=>$item->event_date.' '.$item->event_time,
+                'backgroundColor'=>$level_colors[$item->event_level],
+                'borderColor'=>$level_colors[$item->event_level],
+                'url'=>Url::to(['/event/event/detail','EventDaySearch[event_date]'=>$item->event_date,'#'=>'id_'.$item->event_id])
+            ]);
+            $Events[]=$Event;
+        }
+        return $Events;
     }
 }
