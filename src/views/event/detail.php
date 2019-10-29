@@ -112,11 +112,6 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
     <div class="row">
         <div class="col-md-12">
             <ul class="timeline">
-                <li class="time-label">
-                  <span class="bg-default">
-                    <?= key($events) ?>
-                  </span>
-                </li>
                 <?php if(empty(current($events))): ?>
                     <li>
                         <i class="fa item-i" style="background-color:gray"></i>
