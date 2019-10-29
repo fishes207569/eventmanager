@@ -30,7 +30,8 @@ class EventDaySearch extends BizEvent
                 [
                     'event_date',
                     'event_level',
-                    'event_system'
+                    'event_system',
+                    'event_tag'
                 ],
                 'safe',
             ],

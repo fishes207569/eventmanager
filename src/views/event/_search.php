@@ -17,7 +17,7 @@ use kartik\widgets\ActiveForm;
     </div>
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => [$action],
         'method' => 'get',
         'type'   => ActiveForm::TYPE_INLINE,
 
