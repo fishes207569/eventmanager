@@ -1,14 +1,14 @@
 #float_icon{
-    width:80px;
-    height:80px;
+    width:60px;
+    height:60px;
     background-color:#FF8D3D;
     position:fixed;
     right:50px;
     bottom:50px;
     border-radius:50%;
     text-align:center;
-    line-height:80px;
-    font-size:50px;
+    line-height:60px;
+    font-size:40px;
     color:#fff;
     cursor:pointer;
     box-shadow: 2px 2px 5px #888;
