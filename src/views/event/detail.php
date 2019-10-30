@@ -26,6 +26,13 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
         height: 20px;
         left: 22px;
     }
+    .input-group .input-group-addon{
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+    .form-control{
+        border-radius: 4px;
+    }
 </style>
     <div class="box box-default">
         <div class="box-header with-border">
@@ -113,8 +120,8 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
         <div class="col-md-12">
             <ul class="timeline">
                 <li class="time-label">
-                  <span class="bg-default">
-                    <?= key($events) ?>
+                  <span class="bg-default" style="margin-left: 8px">
+                    时间线
                   </span>
                 </li>
                 <?php if(empty(current($events))): ?>
@@ -144,7 +151,7 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
                     <li>
                         <i class="fa item-i" style="background-color: <?= ConfigHelper::getEventLevelConfig('color')[$event->event_level]  ?>"></i>
 
-                        <div class="timeline-item" id="id_<?= $event->event_id ?>" style="display:block">
+                        <div class="timeline-item" style="display:block">
                             <span class="time"><i class="fa fa-clock-o"></i> <?= $event->event_time ?></span>
 
                             <h3 class="timeline-header">

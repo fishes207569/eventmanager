@@ -135,7 +135,7 @@ class EventSearch extends BizEvent
                 'start'=>$item->event_date.' '.$item->event_time,
                 'backgroundColor'=>$level_colors[$item->event_level],
                 'borderColor'=>$level_colors[$item->event_level],
-                'url'=>Url::to(['/event/event/detail','EventDaySearch[event_date]'=>$item->event_date,'#'=>'id_'.$item->event_id])
+                'url'=>Url::to(['/event/event/detail','EventDaySearch[event_date]'=>$item->event_date])
             ]);
             $Events[]=$Event;
         }
