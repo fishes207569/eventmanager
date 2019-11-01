@@ -76,11 +76,21 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
                         },
                     ],
                 ],
-
-                'event_id',
                 'event_date',
                 'event_time',
-                'event_name',
+                [
+                    'attribute'      => 'event_name',
+                    'format'         => 'raw',
+                    'value'          => function ($model) {
+                        return StringHelper::cut_str(strip_tags($model->event_name), 20);
+                    },
+                    'contentOptions' => function ($model, $key, $index, $column) {
+                        return [
+                            'title' => strip_tags($model->event_name),
+                            'alt'   => strip_tags($model->event_name),
+                        ];
+                    },
+                ],
                 [
                     'attribute'      => 'event_content',
                     'format'         => 'raw',
