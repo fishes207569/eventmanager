@@ -30,6 +30,12 @@
                             window.iframeRunFunction('/event/event/index', function (siWindow) {
                                 siWindow.location.reload();
                             });
+                            window.iframeRunFunction('/event/event/list', function (siWindow) {
+                                siWindow.location.reload();
+                            });
+                            window.iframeRunFunction('/event/event/detail', function (siWindow) {
+                                siWindow.location.reload();
+                            });
                         } catch (e) {
                             if (url.indexOf('event/event') != -1) {
                                 window.location.reload();
