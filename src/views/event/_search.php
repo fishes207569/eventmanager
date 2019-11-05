@@ -1,14 +1,16 @@
 <?php
 
 use ccheng\eventmanager\models\BizEvent;
+use ccheng\eventmanager\models\Searchs\EventSearch;
 use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use yii\helpers\Html;
-use kartik\widgets\ActiveForm;
+use yii\web\View;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model ccheng\eventmanager\models\Searchs\EventSearch */
-/* @var $form kartik\widgets\ActiveForm */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="box box-default">
@@ -19,7 +21,7 @@ use kartik\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => [$action],
         'method' => 'get',
-        'type'   => ActiveForm::TYPE_INLINE,
+        'options'   => ["class"=>"form-inline"],
 
     ]); ?>
     <div class="box-body">
@@ -116,6 +118,7 @@ use kartik\widgets\ActiveForm;
                 $('input[name^=EventSearch]').val('');
                 return false;
             })()")]) ?>
+            <div class="help-block"></div>
         </div>
 
         <?php ActiveForm::end(); ?>

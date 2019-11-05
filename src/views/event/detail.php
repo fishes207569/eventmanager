@@ -1,12 +1,13 @@
 <?php
 
+use ccheng\eventmanager\AdminLteAsset;
 use ccheng\eventmanager\helpers\ConfigHelper;
 use ccheng\eventmanager\helpers\StringHelper;
 use ccheng\eventmanager\models\Searchs\EventDaySearch;
 use kartik\date\DatePicker;
 use kartik\select2\Select2;
 use yii\helpers\Html;
-use kartik\widgets\ActiveForm;
+use yii\widgets\ActiveForm;
 
 /** @var $events EventDaySearch */
 /** @var $week_days array */
@@ -15,6 +16,7 @@ use kartik\widgets\ActiveForm;
 $this->title                   = '事件墙';
 $this->params['breadcrumbs'][] = $this->title;
 $config                        = call_user_func(\Yii::$app->params['event_manager_config']);
+AdminLteAsset::register($this);
 ?>
 <style>
     .timeline-footer a{
@@ -33,6 +35,18 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
     .form-control{
         border-radius: 4px;
     }
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background:
+                #ddd;
+        left: 31px;
+        margin: 0;
+        border-radius: 2px;
+    }
 </style>
     <div class="box box-default">
         <div class="box-header with-border">
@@ -42,7 +56,7 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
         <?php $form = ActiveForm::begin([
             'action' => ['detail'],
             'method' => 'get',
-            'type'   => ActiveForm::TYPE_INLINE,
+            'options'   => ["class"=>"form-inline"],
 
         ]); ?>
         <div class="box-body">
@@ -99,17 +113,17 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
                     'format'         => 'yyyy-mm-dd',
                     'todayHighlight' => true,
                 ],
-            ]) ?>
+            ])->label(false) ?>
             <?= $form->field($model, 'event_tag')->textInput([
-                'class' => 'form-group',
                 'placeholder' => '事件标签',
                 'style' => [
                     'max-width' => '170px',
                 ],
-            ])->label('事件标签') ?>
+            ])->label(false) ?>
             <div class="form-group">
                 <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
                 <?= Html::a('返回',['/event/event/list'],['class' => 'btn btn-default']) ?>
+                <div class="help-block"></div>
             </div>
 
             <?php ActiveForm::end(); ?>

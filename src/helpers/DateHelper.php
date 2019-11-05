@@ -23,4 +23,8 @@ class DateHelper
 
         return $date;
     }
+    public static function todayDate($withSpliter = true)
+    {
+        return $withSpliter ? date('Y-m-d') : date('Ymd');
+    }
 }

@@ -15,7 +15,7 @@
         "bower-asset/layer": "~3.1.1",
         "almasaeed2010/adminlte": "^2.4.0",
         "kartik-v/yii2-widget-select2": "@dev",
-        "kartik-v/yii2-widget-datepicker": "*",
+        "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-widget-datetimepicker": "*",
         "kartik-v/yii2-widget-activeform": ">=1.5.7",
         "kartik-v/yii2-field-range": "*",

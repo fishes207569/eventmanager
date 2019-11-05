@@ -63,7 +63,7 @@ class EventController extends Controller
         $searchModel  = new EventDaySearch();
         $queryParams=Yii::$app->request->queryParams;
         if(!isset($queryParams['EventDaySearch']['event_date']) || empty($queryParams['EventDaySearch']['event_date'])){
-            $queryParams['EventDaySearch']['event_date']=Dh::todayDate();
+            $queryParams['EventDaySearch']['event_date']=DateHelper::todayDate();
         }
         $Events = $searchModel->search($queryParams);
 
