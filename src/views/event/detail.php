@@ -14,6 +14,7 @@ use yii\widgets\ActiveForm;
 /** @var $now_date array */
 
 $this->title                   = '事件墙';
+$this->params['breadcrumbs'][]=['label'=>'事件日历','url'=>\yii\helpers\Url::to(['/event/event/list'])];
 $this->params['breadcrumbs'][] = $this->title;
 $config                        = call_user_func(\Yii::$app->params['event_manager_config']);
 AdminLteAsset::register($this);

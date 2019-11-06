@@ -23,5 +23,11 @@ $config                        = call_user_func(\Yii::$app->params['event_manage
             'center' => 'title',
             'right'  => 'month,agendaWeek,listWeek',
         ],
+        'eventClick'=>new \yii\web\JsExpression("function(event){
+            if(typeof window.top.makeTab === 'function'){
+                window.top.makeTab(event.url);
+                return false;
+            }
+        }")
     ]); ?>
 </div>
